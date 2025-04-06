@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Info</title>
+</head>
+<body>
+
+<h2>User Info:</h2>
+
+<form th:action="@{/safeUser}" th:object="${newAddUser}" method="post">
+  <!-- Correct usage of hidden field -->
+  <input type="hidden" th:field="*{id}"/>
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" th:field="*{name}" required/>
+
+  <label for="surname">Surname:</label>
+  <input type="text" id="surname" th:field="*{surname}" required/>
+
+  <label for="city">City:</label>
+  <input type="text" id="city" th:field="*{city}" required/>
+
+  <input type="submit" value="OK"/>
+</form>
+
+</body>
+</html>
