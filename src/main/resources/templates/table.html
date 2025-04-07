@@ -34,6 +34,7 @@
             <th>Surname:</th>
             <th>City:</th>
             <th>Password:</th>
+            <th>Roles:</th>
             <th>Operations:</th>
         </tr>
         </thead>
@@ -44,16 +45,19 @@
             <td><a th:text="${user.city}">City</a></td>
             <td><a th:text="${user.password}">Password</a> </td>
             <td>
+                <span th:each="role : ${user.roles}" th:text="${role.name + ' '}"></span>
+            </td>
+            <td>
                 <a th:href="@{/update(userId=${user.id})}" class="update-button">Update</a>
                 <a th:href="@{/delete(userId=${user.id})}" class="delete-button">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <br>
+
     <input type="button" value="Add"
            onclick="window.location.href='addUser'"/>
-    <br/>
+
     <form th:action="@{/logout}" method="post" style="margin-top: 20px;">
         <input type="submit" value="Logout" />
     </form>

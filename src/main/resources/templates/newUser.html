@@ -9,17 +9,32 @@
 <h2>User Info:</h2>
 
 <form th:action="@{/safeUser}" th:object="${newAddUser}" method="post">
-  <!-- Correct usage of hidden field -->
   <input type="hidden" th:field="*{id}"/>
 
   <label for="name">Name:</label>
   <input type="text" id="name" th:field="*{name}" required/>
+  <br/>
 
   <label for="surname">Surname:</label>
   <input type="text" id="surname" th:field="*{surname}" required/>
+  <br/>
 
   <label for="city">City:</label>
   <input type="text" id="city" th:field="*{city}" required/>
+  <br/>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" th:field="*{password}" required/>
+  <br/>
+
+  <label for="roles">Roles:</label>
+  <select id="roles" name="roleIds" multiple>
+    <option th:each="role : ${allRoles}"
+            th:value="${role.id}"
+            th:text="${role.name}">
+    </option>
+  </select>
+  <br/>
 
   <input type="submit" value="OK"/>
 </form>
